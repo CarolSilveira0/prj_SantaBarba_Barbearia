@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form action="{% url 'acessar' %}" method="post">
+    <div class="container">
+        <h1>Área do Cliente</h1>
+        <br>
+        <h2>Cadastre-se</h2>
+        Digite seu nome completo: <input name="nome" class="form-control-sm" type="text"><br><br>
+        Data de nascimento: <input name="nascimento" class="form-control-sm" type="date"><br><br>
+        Telefone: <input name="telefone" class="form-control-sm" type="text"><br><br>
+        E-mail: <input name="email" class="form-control-sm" type="text"><br><br>
+        Senha: <input name="senha" class="form-control-sm" type="password"><br><br>
+        <button type="button" class="btn btn-secondary">Cadastrar</button><br><br><br>
+        <a href='login/'>Clique aqui para fazer login</a>
+    </div>
+</form>
+{% endblock %}

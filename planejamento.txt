@@ -1,0 +1,21 @@
+Telas:
+    Home
+    Lista de serviços com os valores
+    Sobre nós: breve histórico
+    Login
+    Área do Cliente:
+        histórico
+        agendamento (horários, profissionais, valor total dos serviços agendados)
+        cancelamento de agendamento (pode ter uma taxa em caso de cancelamento com menos de 24h)
+        area para editar perfil
+        logout
+
+Tabelas:
+    Usuários (nome, dt nascimento, telefone, email, senha)
+    profissionais (nome, especialidade, contato)
+    serviços (id, descricao, valor cobrado, tempo de duracao )
+    agenda (data, hora, profissional, valor total)
+
+Extras:
+    envio de msg/email de aviso para cliente e profissional
+    pagamento de comissoes para o profissional (regra de %)
