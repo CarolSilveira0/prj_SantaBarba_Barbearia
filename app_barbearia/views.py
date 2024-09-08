@@ -1,42 +1,42 @@
 from django.shortcuts import render
-from .models import Usuario, Servico
+# from .models import Usuario, Servico
 
 # Onde vai acontecer a lógica da aplicação, 
 # consulta ao banco de dados, funções, renderização de páginas html
 
-def home(requests):
-    return render(requests, 'base.html')
+def home(request):
+    return render(request, 'home.html')
 
-def sobre(requests):
-    return render(requests, 'sobre.html')
+# def sobre(request):
+#     return render(request, 'sobre.html')
 
-def acesso(requests):
-     return render(requests, 'acessar.html')
+# def acesso(request):
+#      return render(request, 'acessar.html')
 
-def usuario(requests):
-    novo_usuario = Usuario()
-    novo_usuario.nome = requests.POST.get('nome')
-    novo_usuario.nascimento = requests.POST.get('nascimento')
-    novo_usuario.telefone = requests.POST.get('telefone')
-    novo_usuario.email = requests.POST.get('email')
-    novo_usuario.senha = requests.POST.get('senha')
-    novo_usuario.save()
+# def usuario(request):
+#     novo_usuario = Usuario()
+#     novo_usuario.nome = request.POST.get('nome')
+#     novo_usuario.nascimento = request.POST.get('nascimento')
+#     novo_usuario.telefone = request.POST.get('telefone')
+#     novo_usuario.email = request.POST.get('email')
+#     novo_usuario.senha = request.POST.get('senha')
+#     novo_usuario.save()
     
-def area_cliente(requests):
-    return render(requests,'area_cliente.html')
-# def agenda(requests):
-#     return render(requests, 'agenda.html', name='agenda')
+# def area_cliente(request):
+#     return render(request,'area_cliente.html')
+# def agenda(request):
+#     return render(request, 'agenda.html', name='agenda')
 
-# def profissionais(requests):
-#     return render(requests, 'profissionais.html', name='profissionais')
+# def profissionais(request):
+#     return render(request, 'profissionais.html', name='profissionais')
 
-def servicos(requests):
-    servicos = {
-        'servicos': Servico.objects.all()
-    }
+# def servicos(request):
+#     servicos = {
+#         'servicos': Servico.objects.all()
+#     }
     
     
-    return render(requests, 'servicos.html', servicos)
+#     return render(request, 'servicos.html', servicos)
 
 
-Servico.objects.create()
+# Servico.objects.create()

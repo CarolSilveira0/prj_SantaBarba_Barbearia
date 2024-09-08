@@ -2,6 +2,7 @@ Telas:
     Home
     Lista de serviços com os valores
     Sobre nós: breve histórico
+    Profissionais
     Login
     Área do Cliente:
         histórico
@@ -12,8 +13,8 @@ Telas:
 
 Tabelas:
     Usuários (nome, dt nascimento, telefone, email, senha)
-    profissionais (nome, especialidade, contato)
-    serviços (id, descricao, valor cobrado, tempo de duracao )
+    profissionais (nome, especialidade, contato) - ok
+    serviços (id, descricao, valor cobrado, tempo de duracao ) - ok
     agenda (data, hora, profissional, valor total)
 
 Extras:
