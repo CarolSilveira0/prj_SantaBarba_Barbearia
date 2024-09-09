@@ -7,8 +7,8 @@ from django.shortcuts import render
 def home(request):
     return render(request, 'home.html')
 
-# def sobre(request):
-#     return render(request, 'sobre.html')
+def sobre(request):
+    return render(request, 'sobre.html')
 
 # def acesso(request):
 #      return render(request, 'acessar.html')
