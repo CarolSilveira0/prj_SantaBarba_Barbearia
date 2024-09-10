@@ -1,7 +1,7 @@
 Telas:
-    Home
+    Home -ok
     Lista de serviços com os valores
-    Sobre nós: breve histórico
+    Sobre nós: breve histórico - ok
     Profissionais
     Login
     Área do Cliente:

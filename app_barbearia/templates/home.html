@@ -1,11 +1,14 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
 
-        <h1> Onde o estilo encontra a precisão </h1>
-        <br>
-        <h2> Uma barbearia para homens modernos </h2>
+        <div class="card text-bg-dark">
+                <img src="{% static 'image/fundo_home.jpg' %}" class="card-img" alt="...">
+                <div class="card-img-overlay">
+                <h2 class="card-title">Onde o estilo encontra a precisão</h2>
+                <p class="card-text">Uma barbearia para homens modernos.</p>
+                </div>
+      </div>
 
 {% endblock %}
-
-{% comment %} links da navbar <a class="nav-link" href="{% url 'sobre' %}" style="color: #D9D9DF;">Sobre Nós</a> {% endcomment %}
