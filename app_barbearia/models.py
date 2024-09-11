@@ -30,4 +30,14 @@ class Profissional(models.Model):
     def __str__(self) -> str:
         return self.nome
 # class Agenda
+
+    # def calcular_comissoes:
+    # comissoes_Beatriz = []
+    # for dia in agenda:
+    #  agenda.valor * 0.70
+    # if agenda.profissional == 'Beatriz':
+        # comissoes_Beatriz.append(comissao)
+        
+    #return sum(comissoes_Beatriz)
+    
     

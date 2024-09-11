@@ -1,27 +1,31 @@
 from django.shortcuts import render
 from .models import Servico, Profissional
+from django.views.generic import TemplateView, ListView
 
 # Onde vai acontecer a lógica da aplicação, 
 # consulta ao banco de dados, funções, renderização de páginas html
 
-def home(request):
-    return render(request, 'home.html')
-
-def sobre(request):
-    return render(request, 'sobre.html')
+class Home(TemplateView):
+    template_name = 'home.html'
 
 
-def servicos(request):
-    context = {}
-    lista_servicos = Servico.objects.all().order_by('categoria')
-    context['lista_servicos'] = lista_servicos
-    return render(request, 'servicos.html', context)
+class Sobre(TemplateView):
+    template_name = 'sobre.html'
 
-def profissionais(request):
-    context = {}
-    lista_profissionais = Profissional.objects.all()
-    context['lista_profissionais'] = lista_profissionais
-    return render(request, 'profissionais.html', context)
+
+class Servicos(ListView):
+    template_name = 'servicos.html'
+    model = Servico  
+    
+# def servicos(request):
+#     context = {}
+#     lista_servicos = Servico.objects.all().order_by('categoria')
+#     context['lista_servicos'] = lista_servicos
+#     return render(request, 'servicos.html', context)
+
+class Profissionais(ListView):
+   template_name = 'profissionais.html'
+   model = Profissional
 
 # def acesso(request):
 #      return render(request, 'acessar.html')
