@@ -1,4 +1,8 @@
+
+from datetime import datetime
 from django.db import models
+from django.contrib.auth.models import AbstractUser
+# from django.forms.widgets import
 
 LISTA_CATEGORIAS = (
     ('barba', 'Barba'),
@@ -29,15 +33,64 @@ class Profissional(models.Model):
     
     def __str__(self) -> str:
         return self.nome
-# class Agenda
 
-    # def calcular_comissoes:
-    # comissoes_Beatriz = []
-    # for dia in agenda:
-    #  agenda.valor * 0.70
-    # if agenda.profissional == 'Beatriz':
-        # comissoes_Beatriz.append(comissao)
+
+# class Agenda()
+
+# class Usuario(AbstractUser):
+#     data_nascimento = models.DateField()
+    
+
+
+# class AgendaAdmin(models.Manager):
+#     """ Event manager """
+
+#     def get_all_events(self, user):
+#         events = Agenda.objects.filter(user=user, is_active=True, is_deleted=False)
+#         return events
+
+#     def get_running_events(self, user):
+#         running_events = Agenda.objects.filter(
+#             user=user,
+#             is_active=True,
+#             is_deleted=False,
+#             end_time__gte=datetime.now().date(),
+#         ).order_by("start_time")
+#         return running_events
+
+
+# class AgendaAbstrata(models.Model):
+#     """ Event abstract model """
+
+#     is_active = models.BooleanField(default=True)
+#     is_deleted = models.BooleanField(default=False)
+#     created_at = models.DateTimeField(auto_now_add=True)
+#     updated_at = models.DateTimeField(auto_now=True)
+
+#     class Meta:
+#         abstract = True
         
-    #return sum(comissoes_Beatriz)
-    
-    
+        
+# class Agenda(AgendaAbstrata):
+#     """ Event model """
+
+#     user = models.ForeignKey("Usuario", related_name="usuarios")
+#     profissional = models.ForeignKey("Profissional", related_name="profissionais")
+#     servico = models.ManyToManyField("Servico")
+#     start_time = models.DateTimeField()
+#     end_time = models.DateTimeField()
+
+#     objects = AgendaAdmin()
+
+#     def __str__(self):
+#         return self.servico
+
+#     def get_absolute_url(self):
+#         return reverse("calendarapp:event-detail", args=(self.id,))
+
+#     @property
+#     def get_html_url(self):
+#         url = reverse("calendarapp:event-detail", args=(self.id,))
+#         return f'<a href="{url}"> {self.title} </a>'
+
+   

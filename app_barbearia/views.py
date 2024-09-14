@@ -1,5 +1,8 @@
 from django.shortcuts import render
+from django import forms
+from django.contrib.admin.widgets import AdminDateWidget, AdminTimeWidget
 from .models import Servico, Profissional
+# , Agenda
 from django.views.generic import TemplateView, ListView
 
 # Onde vai acontecer a lógica da aplicação, 
@@ -27,8 +30,6 @@ class Profissionais(ListView):
    template_name = 'profissionais.html'
    model = Profissional
 
-# def acesso(request):
-#      return render(request, 'acessar.html')
 
 # def usuario(request):
 #     novo_usuario = Usuario()
@@ -41,9 +42,18 @@ class Profissionais(ListView):
     
 # def area_cliente(request):
 #     return render(request,'area_cliente.html')
-# def agenda(request):
-#     return render(request, 'agenda.html', name='agenda')
 
 
 
-# Servico.objects.create()
+
+
+ # def calcular_comissoes:
+    # comissoes_Beatriz = []
+    # for dia in agenda:
+    #  agenda.valor * 0.70
+    # if agenda.profissional == 'Beatriz':
+        # comissoes_Beatriz.append(comissao)
+        
+    #return sum(comissoes_Beatriz)
+    
+    
