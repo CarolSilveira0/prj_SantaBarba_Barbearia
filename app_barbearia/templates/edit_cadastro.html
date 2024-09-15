@@ -1,0 +1,17 @@
+{% extends 'area_cliente_base.html' %}
+{% load crispy_forms_tags %}
+
+{% block area_cliente %}
+
+    <div class="content">
+        <fieldset>
+            <legend>Edite as suas informações pessoais e clique em Editar</legend>
+            <br>
+            <form method="post">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button type="submit">Editar</button>
+            </form>
+        </fieldset>
+    </div>
+{% endblock %}

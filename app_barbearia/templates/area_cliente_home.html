@@ -1,0 +1,18 @@
+{% extends 'area_cliente_base.html' %}
+
+{% block area_cliente %}
+    <div class="content">
+        <h1>Bem-vindo à Área do Cliente</h1>
+        <p>Selecione no menu ao lado o que você deseja fazer.</p>
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <div class="alert alert-success">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
+

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+    <fieldset>
+        <legend>Crie sua conta</legend>
+    <br>
+        <form method="post" action="{% url 'barbearia:criar_conta' %}">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button type="submit">Criar conta</button>
+        </form>
+    </fieldset>
+{% endblock %}

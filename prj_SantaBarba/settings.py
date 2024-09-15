@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app_barbearia',
+    'crispy_forms',
+    'crispy_bootstrap5',
 ]
 
 MIDDLEWARE = [
@@ -86,6 +88,9 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
+#Método de gerenciamento dos usuários
+AUTH_USER_MODEL = "app_barbearia.Usuario"
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -117,6 +122,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
+#Onde será armazenado meus arquivos CSS, JS e imagens
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
@@ -131,3 +137,15 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#Página para onde o usuário será direcionado quanto realizar o login
+LOGIN_REDIRECT_URL = 'barbearia:area_cliente_home'
+
+#Página para realizar o login
+LOGIN_URL = 'barbearia:login'
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
+
+# https://github.com/django-crispy-forms/crispy-bootstrap5

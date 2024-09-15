@@ -1,12 +1,12 @@
 Telas:
     Home -ok
-    Lista de serviços com os valores
+    Lista de serviços com os valores - ok
     Sobre nós: breve histórico - ok
-    Profissionais
+    Profissionais - ok
     Login
     Área do Cliente:
         histórico
-        agendamento (horários, profissionais, valor total dos serviços agendados)
+        agendamento (horários, profissionais, valor total dos serviços agendados) - ok
         cancelamento de agendamento (pode ter uma taxa em caso de cancelamento com menos de 24h)
         area para editar perfil
         logout

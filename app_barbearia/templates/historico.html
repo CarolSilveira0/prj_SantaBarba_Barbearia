@@ -1,9 +1,24 @@
-{% comment %} {% extends 'base.html' %}
+{% extends 'area_cliente_base.html' %}
 
-{% block content %}
-    <div class="py-10">
-    <p>{{ Agenda.data_inicio }}</p>
-    <p>{{ Agenda.servico }}</p>
-    <p>{{ Agenda.valor_total }}</p>
+{% block area_cliente %}
+    <div class="content">
+        <h3>Aqui estão os últimos serviços que você agendou com a gente:</h3>
+
+        {% for agendamento in agendamentos %}
+            <hr>
+            <ul>
+                <li>
+                    {{ agendamento }}
+                    {% if agendamento.data > today and not agendamento.cancelado %}
+                        <form action="{% url 'barbearia:cancelar_agendamento' agendamento.id %}" method="post" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger">Cancelar</button>
+                        </form>
+                    {% elif agendamento.cancelado %}
+                        <span class="text-muted">(Cancelado)</span>
+                    {% endif %}
+                </li>
+            </ul>
+        {% endfor %}
     </div>
-{% endblock %} {% endcomment %}
+{% endblock %}

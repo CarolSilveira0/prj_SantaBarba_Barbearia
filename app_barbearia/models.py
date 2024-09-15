@@ -1,16 +1,17 @@
 
-from datetime import datetime
+from datetime import date, datetime, timedelta
 from django.db import models
-from django.contrib.auth.models import AbstractUser
-# from django.forms.widgets import
+from django.db.models import Q
+from django.contrib.auth.models import User, AbstractUser
 
+#Onde criamos as tabelas e lógica do banco de dados
+
+#Lista de categorias usada pela tabela Servico
 LISTA_CATEGORIAS = (
     ('barba', 'Barba'),
     ('cabelo', 'Cabelo'),
     ('outro', 'Outros Serviços')    
 )
-
-# Create your models here.
 
 class Servico(models.Model):
     codigo = models.CharField(max_length=6, unique=True)
@@ -33,64 +34,47 @@ class Profissional(models.Model):
     
     def __str__(self) -> str:
         return self.nome
-
-
-# class Agenda()
-
-# class Usuario(AbstractUser):
-#     data_nascimento = models.DateField()
     
+    def is_available(self, data, hora_inicio, duracao):
+        """
+        Verifica se o profissional está disponível para um serviço."""
 
+       # Converter hora_inicio para datetime
+        hora_inicio_dt = datetime.combine(data, hora_inicio)
+        # Calcular o horário de término do agendamento
+        hora_fim_dt = hora_inicio_dt + timedelta(minutes=duracao)
 
-# class AgendaAdmin(models.Manager):
-#     """ Event manager """
+        # Verificar se existem agendamentos conflitantes para o profissional
+        agendamentos_conflitantes = Agendamento.objects.filter(
+            Q(hora_inicio__range=(hora_inicio_dt.time(), hora_fim_dt.time())) | 
+            Q(hora_fim__range=(hora_inicio_dt.time(), hora_fim_dt.time())),
+            profissional=self,
+            data=data
+        )
 
-#     def get_all_events(self, user):
-#         events = Agenda.objects.filter(user=user, is_active=True, is_deleted=False)
-#         return events
+        return not agendamentos_conflitantes.exists()
+ 
+    
+class Usuario(AbstractUser):
+    data_nascimento = models.DateField(blank=True, null=True)
+    telefone = models.CharField(max_length=15, default='0000')
+    
+class Agendamento(models.Model):
+    nome_usuario = models.ForeignKey(Usuario, related_name="agendamentos", on_delete=models.CASCADE)
+    data = models.DateField()
+    hora_inicio = models.TimeField()
+    hora_fim = models.TimeField(blank=True, null=True)
+    servico = models.ForeignKey("Servico", on_delete=models.CASCADE)
+    profissional = models.ForeignKey("Profissional", on_delete=models.CASCADE)
+    valor_servico = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
+    cancelado = models.BooleanField(default=False)
 
-#     def get_running_events(self, user):
-#         running_events = Agenda.objects.filter(
-#             user=user,
-#             is_active=True,
-#             is_deleted=False,
-#             end_time__gte=datetime.now().date(),
-#         ).order_by("start_time")
-#         return running_events
+    def save(self, *args, **kwargs):
+        if self.hora_inicio and self.servico:
+            self.hora_fim = (datetime.combine(date.today(), self.hora_inicio) + timedelta(minutes=self.servico.tempo)).time()
+            self.valor_servico = self.servico.valor
+        super().save(*args, **kwargs)
 
-
-# class AgendaAbstrata(models.Model):
-#     """ Event abstract model """
-
-#     is_active = models.BooleanField(default=True)
-#     is_deleted = models.BooleanField(default=False)
-#     created_at = models.DateTimeField(auto_now_add=True)
-#     updated_at = models.DateTimeField(auto_now=True)
-
-#     class Meta:
-#         abstract = True
-        
-        
-# class Agenda(AgendaAbstrata):
-#     """ Event model """
-
-#     user = models.ForeignKey("Usuario", related_name="usuarios")
-#     profissional = models.ForeignKey("Profissional", related_name="profissionais")
-#     servico = models.ManyToManyField("Servico")
-#     start_time = models.DateTimeField()
-#     end_time = models.DateTimeField()
-
-#     objects = AgendaAdmin()
-
-#     def __str__(self):
-#         return self.servico
-
-#     def get_absolute_url(self):
-#         return reverse("calendarapp:event-detail", args=(self.id,))
-
-#     @property
-#     def get_html_url(self):
-#         url = reverse("calendarapp:event-detail", args=(self.id,))
-#         return f'<a href="{url}"> {self.title} </a>'
-
-   
+    def __str__(self):
+        data_formatada = self.data.strftime("%d/%m/%Y")
+        return f"{self.nome_usuario} - {self.servico} com {self.profissional} em {data_formatada} às {self.hora_inicio} - valor a pagar R${self.valor_servico}"
