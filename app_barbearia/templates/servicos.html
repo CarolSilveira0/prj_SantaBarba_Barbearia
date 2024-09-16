@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="py-10">
-        <h3> Aqui você encontra os melhores serviços </h3>
+    <div>
+        <h3 class="titulo"> Aqui você encontra os melhores serviços </h3>
         {% for servico in object_list %}
         <hr>
-        <h5>{{ servico }}</h5>
-        <p>{{ servico.descricao_longa }}</p>
-        <p>Valor do serviço: R$ {{ servico.valor }}</p>
+        <h5 class="titulos">{{ servico }}</h5>
+        <p class="container">{{ servico.descricao_longa }}</p>
+        <p class="container">Valor do serviço: R$ {{ servico.valor }}</p>
 
         {% endfor %}
     </div>

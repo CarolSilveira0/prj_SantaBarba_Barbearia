@@ -24,7 +24,6 @@ urlpatterns = [
     path('area_cliente/historico/', Historico.as_view(), name='historico'),
     path('cancelar_agendamento/<int:agendamento_id>/', cancelar_agendamento, name='cancelar_agendamento'),
     path('area_cliente/editar_cadastro/<int:pk>', EditarConta.as_view(), name='edit_conta'),
-    
 ]
     
     

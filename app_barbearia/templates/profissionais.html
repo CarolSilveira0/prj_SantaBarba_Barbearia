@@ -1,14 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="py-10">
-        <h3> Aqui você encontra os melhores profissionais </h3>
+    <div>
+        <h3 class="titulos"> Aqui você encontra os melhores profissionais </h3>
 
         {% for pessoa in object_list %}
         <hr>
-        <h5>{{ pessoa }}</h5>
-        <img src="{{ pessoa.foto.url }}" alt="" width="120" height="80" class="d-inline-block align-text-top">
-        <p>{{ pessoa.historico }}</p>
+        <h5 class="titulo">{{ pessoa }}</h5>
+        <div class="d-flex justify-content-center">
+            <img src="{{ pessoa.foto.url }}" alt="" width="400" height="280" class="d-inline-block align-text-top">
+        </div>
+        <p class="container">{{ pessoa.historico }}</p>
 
         {% endfor %}
     </div>

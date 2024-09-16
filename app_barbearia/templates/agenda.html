@@ -12,7 +12,7 @@
             <form method="post" action="{% url 'barbearia:agendar' %}">
                 {% csrf_token %}
                 {{ form|crispy }}
-                <button type="submit">Agendar</button>
+                <button class="botao" type="submit">Agendar</button>
             </form>
         </div>
     </div>

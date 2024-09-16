@@ -3,7 +3,6 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
 
-
 #Imports Projeto e externos
 from datetime import timedelta, date, datetime
 from .models import Agendamento, Usuario

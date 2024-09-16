@@ -59,6 +59,7 @@ class Usuario(AbstractUser):
     data_nascimento = models.DateField(blank=True, null=True)
     telefone = models.CharField(max_length=15, default='0000')
     
+    
 class Agendamento(models.Model):
     nome_usuario = models.ForeignKey(Usuario, related_name="agendamentos", on_delete=models.CASCADE)
     data = models.DateField()

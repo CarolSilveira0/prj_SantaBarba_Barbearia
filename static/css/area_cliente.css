@@ -1,16 +1,30 @@
 .area-cliente {
     display: flex;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 200;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0.1rem;
+    margin-bottom: 5px;
+    margin-left: 30px;
+    margin-right: 280px;
+    padding: 100px;
 }
 
 .sidebar {
-    width: 250px; /* Ajuste conforme necessário */
+    width: 150PX; /* Ajuste conforme necessário */
+    font-family: 'Poppins', sans-serif;
     background-color: #f4f4f4;
     padding: 20px;
+    height: 460px;
+    line-height: 2.0;
 }
 
 .content {
     flex-grow: 1;
-    padding: 20px;
+    padding: 10px;
+    text-align: left;
+    margin-left: 15px;
 }
 
 .alert {
